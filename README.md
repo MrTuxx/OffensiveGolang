@@ -58,18 +58,12 @@ $ sudo apt install libz-mingw-w64-dev
 ### Simple Go Reverse Shell
 
 - Simple Golang connection **(UPDATE: Not detected by AV as of 19/03/2022)**
-```
-$ cd examples\reverse_shell
-$ garble -literals -seed=random -tiny build -o output.exe
-```
+
 ![](https://i.imgur.com/fySYfUp.png)
 
 ### Simple Go Reverse Shell in a dll
 - Simple Golang connection **(UPDATE: Not detected by AV as of 19/03/2022)**
-```
-$ cd examples\reverse_shell_dll
-$ go build -o output.dll -buildmode=c-shared reverse_shell_dll.go
-```
+
 ![](https://i.imgur.com/N9LiWuo.png)
 
 
