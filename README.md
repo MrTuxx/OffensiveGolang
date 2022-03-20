@@ -32,14 +32,14 @@ go get github.com/MrTuxx/OffensiveGolang
 - Installation of dependencies
 
 ```
-$ sudo apt install gcc libc6-dev
-$ sudo apt install libx11-dev xorg-dev libxtst-dev
-$ sudo apt install libpng++-dev
-$ sudo apt install xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libxkbcommon-dev
-$ sudo apt install xsel xclip
-$ sudo apt install gcc-multilib
-$ sudo apt install gcc-mingw-w64
-$ sudo apt install libz-mingw-w64-dev
+$ sudo apt install xsel xclip gcc libc6-dev libx11-dev xorg-dev libxtst-dev libpng++-dev xcb libxcb-xkb-dev x11-xkb-utils libx11-xcb-dev libxkbcommon-x11-dev libxkbcommon-dev gcc-multilib gcc-mingw-w64 libz-mingw-w64-dev
+$ sudo apt install 
+$ sudo apt install 
+$ sudo apt install 
+$ sudo apt install 
+$ sudo apt install 
+$ sudo apt install 
+$ sudo apt install 
 ```
 
 ### Windows
