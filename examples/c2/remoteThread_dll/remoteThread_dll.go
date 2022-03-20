@@ -2,14 +2,15 @@ package main
 
 import "C"
 import (
-	"OffensiveGolang/pkg/evasion"
-	"OffensiveGolang/pkg/exfil"
 	"crypto/aes"
 	"crypto/cipher"
 	"encoding/base64"
 	"errors"
 	"syscall"
 	"unsafe"
+
+	"github.com/MrTuxx/OffensiveGolang/pkg/evasion"
+	"github.com/MrTuxx/OffensiveGolang/pkg/exfil"
 )
 
 const (

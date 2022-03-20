@@ -1,4 +1,4 @@
-module OffensiveGolang
+module github.com/MrTuxx/OffensiveGolang
 
 go 1.17
 

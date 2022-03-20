@@ -2,7 +2,7 @@ package main
 
 import "C"
 import (
-	persistance "OffensiveGolang/pkg/persistence"
+	persistance "github.com/MrTuxx/OffensiveGolang/pkg/persistence"
 )
 
 //export task

@@ -1,6 +1,6 @@
 package main
 
-import persistance "OffensiveGolang/pkg/persistence"
+import persistance "github.com/MrTuxx/OffensiveGolang/pkg/persistence"
 
 func main() {
 	var err error

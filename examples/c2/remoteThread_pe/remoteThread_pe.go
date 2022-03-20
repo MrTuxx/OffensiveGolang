@@ -1,9 +1,10 @@
 package main
 
 import (
-	"OffensiveGolang/pkg/evasion"
-	shellcode "OffensiveGolang/pkg/payloads/injections/remoteThread"
 	"fmt"
+
+	"github.com/MrTuxx/OffensiveGolang/pkg/evasion"
+	shellcode "github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/remoteThread"
 )
 
 func main() {

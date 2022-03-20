@@ -1,8 +1,8 @@
 package main
 
 import (
-	"OffensiveGolang/pkg/evasion"
-	shellcode "OffensiveGolang/pkg/payloads/injections/syscall"
+	"github.com/MrTuxx/OffensiveGolang/pkg/evasion"
+	shellcode "github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/syscall"
 )
 
 func main() {
