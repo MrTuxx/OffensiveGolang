@@ -24,7 +24,7 @@ The different modules presented are the following:
 ## Installation 🛠
 
 ```
-go get https://github.com/MrTuxx/OffensiveGolang
+go get github.com/MrTuxx/OffensiveGolang
 ```
 
 ### Linux
