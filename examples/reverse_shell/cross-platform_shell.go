@@ -1,9 +1,10 @@
 package main
 
 import (
-	"OffensiveGolang/pkg/payloads/rev_shell/rev_shell"
 	"fmt"
 	"time"
+
+	"github.com/MrTuxx/OffensiveGolang/pkg/payloads/rev_shell/rev_shell"
 )
 
 func main() {
