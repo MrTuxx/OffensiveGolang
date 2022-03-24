@@ -1,6 +1,6 @@
 package main
 
-import "OffensiveGolang/pkg/encryption"
+import "github.com/MrTuxx/OffensiveGolang/pkg/encryption"
 
 func main() {
 
