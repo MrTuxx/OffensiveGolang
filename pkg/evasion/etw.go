@@ -120,10 +120,10 @@ func UnhookNTDLL(hNtdll windows.Handle, pMapping uintptr) error {
 		pish := (*IMAGE_SECTION_HEADER)(unsafe.Pointer(uintptr(pMapping) + sectionOffset))
 
 		sectionName := strings.TrimRight(string(pish.Name[:]), "\x00")
-		fmt.Printf("Section %d: %s\n", i, sectionName)
+		fmt.Printf("[+] Section %d: %s\n", i, sectionName)
 
 		if sectionName == ".text" {
-			fmt.Println("Found .text section")
+			fmt.Println("[+] Found .text section")
 
 			// Prepare ntdll.dll memory region for write permissions.
 			err := windows.VirtualProtect(
@@ -133,10 +133,10 @@ func UnhookNTDLL(hNtdll windows.Handle, pMapping uintptr) error {
 				&oldProtect,
 			)
 			if err != nil {
-				fmt.Printf("VirtualProtect for write permissions failed: %v\n", err)
+				fmt.Printf("[!] VirtualProtect for write permissions failed: %v\n", err)
 				return err
 			}
-			fmt.Println("VirtualProtect succeeded")
+			fmt.Println("[+] VirtualProtect succeeded")
 
 			// Copy original .text section into ntdll memory
 			copyMemory(
@@ -144,7 +144,7 @@ func UnhookNTDLL(hNtdll windows.Handle, pMapping uintptr) error {
 				pMapping+uintptr(pish.VirtualAddress),
 				uintptr(pish.VirtualSize),
 			)
-			fmt.Println("CopyMemory succeeded")
+			fmt.Println("[+] CopyMemory succeeded")
 
 			// Restore original protection settings of ntdll
 			err = windows.VirtualProtect(
@@ -154,15 +154,15 @@ func UnhookNTDLL(hNtdll windows.Handle, pMapping uintptr) error {
 				&oldProtect,
 			)
 			if err != nil {
-				fmt.Printf("Restoring VirtualProtect failed: %v\n", err)
+				fmt.Printf("[!] Restoring VirtualProtect failed: %v\n", err)
 				return err
 			}
-			fmt.Println("Restoring VirtualProtect succeeded")
+			fmt.Println("[+] Restoring VirtualProtect succeeded")
 			return nil
 		}
 		sectionOffset += unsafe.Sizeof(IMAGE_SECTION_HEADER{})
 	}
-	return fmt.Errorf("Failed to find .text section")
+	return fmt.Errorf("[!] Failed to find .text section")
 }
 
 func copyMemory(dest, src uintptr, length uintptr) {
