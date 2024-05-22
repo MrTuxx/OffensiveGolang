@@ -107,14 +107,14 @@ func SendTeamsMessage(webhookURL, message string) {
 
 	payloadBytes, err := json.Marshal(payload)
 	if err != nil {
-		fmt.Println("Error marshaling payload:", err)
+		fmt.Println("[!] Error marshaling payload:", err)
 		return
 	}
 
 	client := &http.Client{}
 	req, err := http.NewRequest("POST", webhookURL, strings.NewReader(string(payloadBytes)))
 	if err != nil {
-		fmt.Println("Error creating request:", err)
+		fmt.Println("[!] Error creating request:", err)
 		return
 	}
 
@@ -124,13 +124,13 @@ func SendTeamsMessage(webhookURL, message string) {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		fmt.Println("Error sending request to Teams:", err)
+		fmt.Println("[!] Error sending request to Teams:", err)
 		return
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
 		body, _ := ioutil.ReadAll(resp.Body)
-		fmt.Printf("Request to Teams returned an error %d, the response is:\n%s\n", resp.StatusCode, string(body))
+		fmt.Printf("[!] Request to Teams returned an error %d, the response is:\n%s\n", resp.StatusCode, string(body))
 	}
 }
