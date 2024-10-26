@@ -7,7 +7,7 @@ import (
 	"log"
 
 	"github.com/MrTuxx/OffensiveGolang/pkg/evasion"
-	shellcode "github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/fibers"
+	"github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/fibers/fibers_v1"
 )
 
 func main() {
@@ -26,5 +26,5 @@ func main() {
 	hash := sha256.Sum256([]byte(password))
 	key := base64.StdEncoding.EncodeToString(hash[:])
 	//println(key)
-	shellcode.ShellcodeFibers(enc_string, key)
+	fibers_v1.ShellcodeFibers(enc_string, key)
 }

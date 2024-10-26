@@ -1,4 +1,4 @@
-package shellcode
+package fibers_v1
 
 import (
 	"crypto/aes"

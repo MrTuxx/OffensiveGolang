@@ -1,4 +1,4 @@
-package shellcode
+package createThread
 
 import (
 	"crypto/aes"

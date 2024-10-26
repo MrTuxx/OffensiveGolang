@@ -1,4 +1,4 @@
-package shellcode
+package remoteThread
 
 import (
 	"crypto/aes"

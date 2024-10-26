@@ -1,4 +1,4 @@
-package shellcode
+package syscall_inject
 
 import (
 	"crypto/aes"
